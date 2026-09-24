@@ -13,26 +13,41 @@ import Vista.VistaEstudiante;
 
 public class ControladorEstudiante {
     private final VistaEstudiante vista;
-    private Estudiante modelo;
+    private Estudiante[] modelos;
 
-    // El constructor solo recibe la vista. El modelo se creará en iniciarGestion()
     public ControladorEstudiante(VistaEstudiante vista) {
         this.vista = vista;
     }
 
     public void iniciarGestion() {
-        // 1. Capturar datos a través de la vista
-        String nombre = vista.capturarNombre();
-        String codigo = vista.capturarCodigo();
-        double promedio = vista.capturarPromedio();
 
-        // 2. Instanciar el modelo con los datos capturados
-        modelo = new Estudiante(nombre, codigo, promedio);
+        //la cantidad temporal de estudiantes
+        int cantidadEstudiantes = 3;
 
-        // 3. Evaluar la regla de negocio
-        boolean estaAprobado = modelo.apruebaAsignatura();
+        //arreglo de estudiantes
+        modelos = new Estudiante[cantidadEstudiantes];
 
-        // 4. Enviar los resultados finales a la vista para que los muestre
-        vista.mostrarResultadoFinal(modelo.getNombre(), modelo.getPromedioPonderado(), estaAprobado);
+        //registrar cada estudiante
+        for (int i = 0; i < modelos.length; i++) {
+
+            String nombre = vista.capturarNombre();
+            String codigo = vista.capturarCodigo();
+            double promedio = vista.capturarPromedio();
+
+            // guardar el estudiante en la posición correspondiente del arreglo
+            modelos[i] = new Estudiante(nombre, codigo, promedio);
+        }
+
+        //mostrar los resultados de cada estudiante
+        for (int i = 0; i < modelos.length; i++) {
+
+            boolean estaAprobado = modelos[i].apruebaAsignatura();
+
+            vista.mostrarResultadoFinal(
+                    modelos[i].getNombre(),
+                    modelos[i].getPromedioPonderado(),
+                    estaAprobado
+            );
+        }
     }
 }

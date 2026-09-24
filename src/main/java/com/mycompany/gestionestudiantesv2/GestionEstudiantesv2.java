@@ -10,18 +10,18 @@ import Vista.VistaEstudiante;
  *
  * @author juans
  */
+
 public class GestionEstudiantesv2 {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
 
-        // 1. Instanciar la vista
+        //instanciar la vista
         VistaEstudiante vista = new VistaEstudiante();
 
-        // 2. Instanciar el controlador pasándole la vista
+        // instanciar el controlador
         ControladorEstudiante controlador = new ControladorEstudiante(vista);
 
-        // 3. Iniciar el flujo del programa
+        // inicializar
         controlador.iniciarGestion();
     }
 }
