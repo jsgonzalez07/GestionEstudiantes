@@ -10,18 +10,20 @@ package Modelo;
  */
 
 public class Estudiante {
-    // Encapsulamiento: atributos privados
+
     private String nombre;
     private String codigoEstudiantil;
     private double promedioPonderado;
+    private String programa;
 
     public Estudiante() {
     }
 
-    public Estudiante(String nombre, String codigoEstudiantil, double promedioPonderado) {
+    public Estudiante(String nombre, String codigoEstudiantil, double promedioPonderado, String programa) {
         this.nombre = nombre;
         this.codigoEstudiantil = codigoEstudiantil;
         this.promedioPonderado = promedioPonderado;
+        this.programa = programa;
     }
 
     public String getNombre() {
@@ -47,8 +49,15 @@ public class Estudiante {
     public void setPromedioPonderado(double promedioPonderado) {
         this.promedioPonderado = promedioPonderado;
     }
-    
-    // Determina si el estudiante aprueba
+
+    public String getPrograma() {
+        return programa;
+    }
+
+    public void setPrograma(String programa) {
+        this.programa = programa;
+    }
+
     public boolean apruebaAsignatura() {
         return this.promedioPonderado >= 3.0;
     }

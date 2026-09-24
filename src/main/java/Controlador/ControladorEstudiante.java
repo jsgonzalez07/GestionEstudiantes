@@ -12,6 +12,7 @@ import Vista.VistaEstudiante;
  */
 
 public class ControladorEstudiante {
+
     private final VistaEstudiante vista;
     private Estudiante[] modelos;
 
@@ -23,20 +24,23 @@ public class ControladorEstudiante {
 
         int cantidadEstudiantes = vista.capturarCantidadEstudiantes();
 
-        // Crear el arreglo de estudiantes
         modelos = new Estudiante[cantidadEstudiantes];
 
-        // Registrar cada estudiante
         for (int i = 0; i < modelos.length; i++) {
 
             String nombre = vista.capturarNombre();
             String codigo = vista.capturarCodigo();
+            String programa = vista.capturarPrograma();
             double promedio = vista.capturarPromedio();
 
-            modelos[i] = new Estudiante(nombre, codigo, promedio);
+            modelos[i] = new Estudiante(
+                    nombre,
+                    codigo,
+                    promedio,
+                    programa
+            );
         }
 
-        // Mostrar los resultados de cada estudiante
         for (int i = 0; i < modelos.length; i++) {
 
             boolean estaAprobado = modelos[i].apruebaAsignatura();
@@ -46,6 +50,26 @@ public class ControladorEstudiante {
                     modelos[i].getPromedioPonderado(),
                     estaAprobado
             );
+        }
+
+        double notaLimite = vista.capturarNotaLimite();
+
+        mostrarTecnologiasPorNota(notaLimite);
+    }
+
+    public void mostrarTecnologiasPorNota(double notaLimite) {
+
+        for (int i = 0; i < modelos.length; i++) {
+
+            if (modelos[i].getPrograma().equalsIgnoreCase("Tecnología")
+                    && modelos[i].getPromedioPonderado() > notaLimite) {
+
+                vista.mostrarEstudianteTecnologia(
+                        modelos[i].getCodigoEstudiantil(),
+                        modelos[i].getNombre(),
+                        modelos[i].getPromedioPonderado()
+                );
+            }
         }
     }
 }

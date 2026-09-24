@@ -15,13 +15,11 @@ public class GestionEstudiantesv2 {
 
     public static void main(String[] args) {
 
-        //instanciar la vista
         VistaEstudiante vista = new VistaEstudiante();
 
-        // instanciar el controlador
-        ControladorEstudiante controlador = new ControladorEstudiante(vista);
+        ControladorEstudiante controlador =
+                new ControladorEstudiante(vista);
 
-        // inicializar
         controlador.iniciarGestion();
     }
 }
