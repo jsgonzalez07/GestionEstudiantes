@@ -32,12 +32,14 @@ public class ControladorEstudiante {
             String codigo = vista.capturarCodigo();
             String programa = vista.capturarPrograma();
             double promedio = vista.capturarPromedio();
+            double notaDesarrollo = vista.capturarNotaDesarrollo();
 
             modelos[i] = new Estudiante(
                     nombre,
                     codigo,
                     promedio,
-                    programa
+                    programa,
+                    notaDesarrollo
             );
         }
 
@@ -55,6 +57,18 @@ public class ControladorEstudiante {
         double notaLimite = vista.capturarNotaLimite();
 
         mostrarTecnologiasPorNota(notaLimite);
+
+        double incremento = vista.capturarIncrementoDesarrollo();
+
+        incrementarNotaDesarrollo(incremento);
+
+        for (int i = 0; i < modelos.length; i++) {
+
+            vista.mostrarNotaDesarrollo(
+                    modelos[i].getNombre(),
+                    modelos[i].getNotaDesarrollo()
+            );
+        }
     }
 
     public void mostrarTecnologiasPorNota(double notaLimite) {
@@ -70,6 +84,23 @@ public class ControladorEstudiante {
                         modelos[i].getPromedioPonderado()
                 );
             }
+        }
+    }
+
+    public void incrementarNotaDesarrollo(double incremento) {
+
+        for (int i = 0; i < modelos.length; i++) {
+
+            double notaActual = modelos[i].getNotaDesarrollo();
+
+            double incrementoPermitido = Math.min(
+                    incremento,
+                    5.0 - notaActual
+            );
+
+            modelos[i].setNotaDesarrollo(
+                    notaActual + incrementoPermitido
+            );
         }
     }
 }

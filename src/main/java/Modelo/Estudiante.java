@@ -15,15 +15,20 @@ public class Estudiante {
     private String codigoEstudiantil;
     private double promedioPonderado;
     private String programa;
+    private double notaDesarrollo;
 
     public Estudiante() {
     }
 
-    public Estudiante(String nombre, String codigoEstudiantil, double promedioPonderado, String programa) {
+    public Estudiante(String nombre, String codigoEstudiantil,
+            double promedioPonderado, String programa,
+            double notaDesarrollo) {
+
         this.nombre = nombre;
         this.codigoEstudiantil = codigoEstudiantil;
         this.promedioPonderado = promedioPonderado;
         this.programa = programa;
+        this.notaDesarrollo = notaDesarrollo;
     }
 
     public String getNombre() {
@@ -56,6 +61,14 @@ public class Estudiante {
 
     public void setPrograma(String programa) {
         this.programa = programa;
+    }
+
+    public double getNotaDesarrollo() {
+        return notaDesarrollo;
+    }
+
+    public void setNotaDesarrollo(double notaDesarrollo) {
+        this.notaDesarrollo = notaDesarrollo;
     }
 
     public boolean apruebaAsignatura() {

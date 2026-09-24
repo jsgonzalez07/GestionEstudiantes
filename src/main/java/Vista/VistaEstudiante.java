@@ -61,6 +61,17 @@ public class VistaEstudiante {
         return Double.parseDouble(input);
     }
 
+    public double capturarNotaDesarrollo() {
+        String input = JOptionPane.showInputDialog(
+                null,
+                "Ingrese la nota de desarrollo del estudiante:",
+                "Datos del Estudiante",
+                JOptionPane.QUESTION_MESSAGE
+        );
+
+        return Double.parseDouble(input);
+    }
+
     public double capturarNotaLimite() {
         String input = JOptionPane.showInputDialog(
                 null,
@@ -72,7 +83,22 @@ public class VistaEstudiante {
         return Double.parseDouble(input);
     }
 
-    public void mostrarResultadoFinal(String nombre, double promedio, boolean aprobado) {
+    public double capturarIncrementoDesarrollo() {
+        String input = JOptionPane.showInputDialog(
+                null,
+                "Ingrese el incremento de desarrollo entre 0.0 y 0.5:",
+                "Incremento de Desarrollo",
+                JOptionPane.QUESTION_MESSAGE
+        );
+
+        return Double.parseDouble(input);
+    }
+
+    public void mostrarResultadoFinal(
+            String nombre,
+            double promedio,
+            boolean aprobado) {
+
         String estado = aprobado ? "APROBADO" : "REPROBADO";
 
         int tipoIcono = aprobado
@@ -107,6 +133,21 @@ public class VistaEstudiante {
                 null,
                 mensaje,
                 "Estudiante de Tecnología",
+                JOptionPane.INFORMATION_MESSAGE
+        );
+    }
+
+    public void mostrarNotaDesarrollo(
+            String nombre,
+            double notaDesarrollo) {
+
+        String mensaje = "Estudiante: " + nombre + "\n"
+                + "Nueva nota de desarrollo: " + notaDesarrollo;
+
+        JOptionPane.showMessageDialog(
+                null,
+                mensaje,
+                "Nota de Desarrollo",
                 JOptionPane.INFORMATION_MESSAGE
         );
     }
