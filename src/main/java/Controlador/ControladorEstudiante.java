@@ -21,24 +21,22 @@ public class ControladorEstudiante {
 
     public void iniciarGestion() {
 
-        //la cantidad temporal de estudiantes
-        int cantidadEstudiantes = 3;
+        int cantidadEstudiantes = vista.capturarCantidadEstudiantes();
 
-        //arreglo de estudiantes
+        // Crear el arreglo de estudiantes
         modelos = new Estudiante[cantidadEstudiantes];
 
-        //registrar cada estudiante
+        // Registrar cada estudiante
         for (int i = 0; i < modelos.length; i++) {
 
             String nombre = vista.capturarNombre();
             String codigo = vista.capturarCodigo();
             double promedio = vista.capturarPromedio();
 
-            // guardar el estudiante en la posición correspondiente del arreglo
             modelos[i] = new Estudiante(nombre, codigo, promedio);
         }
 
-        //mostrar los resultados de cada estudiante
+        // Mostrar los resultados de cada estudiante
         for (int i = 0; i < modelos.length; i++) {
 
             boolean estaAprobado = modelos[i].apruebaAsignatura();

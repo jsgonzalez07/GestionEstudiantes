@@ -35,7 +35,19 @@ public class VistaEstudiante {
         // Convertimos el texto ingresado a un valor numérico decimal
         return Double.parseDouble(input);
     }
+    public int capturarCantidadEstudiantes() {
+        String input = JOptionPane.showInputDialog(
+            null,
+            "Ingrese el número de estudiantes:",
+            "Cantidad de Estudiantes",
+            JOptionPane.QUESTION_MESSAGE
+        );
 
+        return Integer.parseInt(input);
+    }
+    
+    
+    
     public void mostrarResultadoFinal(String nombre, double promedio, boolean aprobado) {
         String estado = aprobado ? "APROBADO" : "REPROBADO";
         
